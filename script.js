@@ -1,30 +1,42 @@
 // Write your JavaScript code here!
 
-const { formSubmission } = require("./scriptHelper");
-
 window.addEventListener("load", function() {
+    //updating items      
+    const doc = document.getElementById(this.document);  
+    const list = document.getElementById("faultyItems");
+    const launchStatus = document.getElementById("launchStatus");
+    const pilotStatus = document.getElementById("pilotStatus");
+    const copilotStatus = document.getElementById("copilotStatus");
+    const fuelStatus = document.getElementById("fuelStatus");
+    const cargoStatus = document.getElementById("cargoStatus");
+    
 
     let form = document.querySelector("form");
+//Submit button listener    
     form.addEventListener("submit", function(event) {
         event.preventDefault(); 
+        //form inputs        
+    const pilot = document.querySelector("input[name=pilotName]").value;
+    const copilot = document.querySelector("input[name=copilotName]").value;
+    const fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+    const cargoMass = document.querySelector("input[name=cargoMass]").value;
         
-        const list = document.getElementById("faultyItems");
-
-        const pilotName = document.querySelector("input[name=pilotName]").value;
-        const copilotName = document.querySelector("input[name=copilotName]").value;
-        const fuelLevel = document.querySelector("input[name=fuelLevel]").value;
-        const cargoMass = document.querySelector("input[name=cargoMass]").value;
-        if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "") {
-            alert("All fields are required!");
-        } else {
-            formSubmission 
-        }; 
-           
+    formSubmission(doc, list, pilot, copilot, fuelLevel, cargoMass);
+    
+    // //all fields required alert        
+    //     if (pilot === "" || copilot === "" || fuelLevel === "" || cargoMass === "") {
+    //         alert("All fields are required!");
+    //     } else {
+    //        formsub*
+    //     };  
+      
     });
+     
 
+ //destination data   
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse;
+   let listedPlanetsResponse = myFetch();
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
