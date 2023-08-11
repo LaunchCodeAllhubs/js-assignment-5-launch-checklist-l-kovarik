@@ -4,6 +4,7 @@ window.addEventListener("load", function() {
     //updating items      
     const doc = document.getElementById(this.document);  
     const list = document.getElementById("faultyItems");
+    list.style.visibility = 'hidden';
     const launchStatus = document.getElementById("launchStatus");
     const pilotStatus = document.getElementById("pilotStatus");
     const copilotStatus = document.getElementById("copilotStatus");
