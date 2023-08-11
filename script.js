@@ -22,13 +22,6 @@ window.addEventListener("load", function() {
     const cargoMass = document.querySelector("input[name=cargoMass]").value;
         
     formSubmission(doc, list, pilot, copilot, fuelLevel, cargoMass);
-    
-    // //all fields required alert        
-    //     if (pilot === "" || copilot === "" || fuelLevel === "" || cargoMass === "") {
-    //         alert("All fields are required!");
-    //     } else {
-    //        formsub*
-    //     };  
       
     });
      
