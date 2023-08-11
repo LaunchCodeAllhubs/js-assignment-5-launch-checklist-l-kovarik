@@ -3,8 +3,7 @@ require('isomorphic-fetch');
 
 //Destination format
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
+  document.getElementById("missionTarget").innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
                     <li>Name: ${name}</li>
@@ -13,8 +12,8 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                     <li>Distance from Earth: ${distance}</li>
                     <li>Number of Moons: ${moons}</li>
                 </ol>
-                <img src="${image}">
-   */
+                <img src="${imageUrl}">
+    `;
 }
 //validation function
 function validateInput(testInput) {
@@ -82,25 +81,19 @@ function formSubmission(doc, list, pilot, copilot, fuelLevel, cargoMass) {
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch";
         document.getElementById("launchStatus").style.color = "rgb(65, 159, 106)";
     };
-
 }
-
-
-
 
 //Fetch Planets
 function myFetch() {
-    let planetsReturned;
-    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-        response.json().then(function(planetsReturned) {
-            console.log(planetsReturned);
-        });
+    return fetch("https://handlers.education.launchcode.org/static/planets.json").then(async function(response) {
+      return await response.json();
     });
-}
-
+  }
 
 //Choose destination
 function pickPlanet(planets) {
+    const randomNum = Math.floor(Math.random() * planets.length);
+    return planets[randomNum];
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
